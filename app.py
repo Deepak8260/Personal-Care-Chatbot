@@ -17,7 +17,7 @@ def setup_agent():
     return agent, llm
 
 agent, llm = setup_agent()
-parser = StrOutputParser()  # ✅ Initialize parser
+# parser = StrOutputParser()  # ✅ Initialize parser
 
 # --- Initialize Session State ---
 if "messages" not in st.session_state:
