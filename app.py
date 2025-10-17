@@ -2,7 +2,7 @@ import streamlit as st
 from services.llm_service import init_gemini_model
 from services.db_service import init_database
 from services.agent_service import create_agent
-from langchain.schema import StrOutputParser  # ✅ Import string parser
+# from langchain.schema import StrOutputParser  # ✅ Import string parser
 
 # --- Page Setup ---
 st.set_page_config(page_title="💬 Product Info Assistant", layout="centered")
@@ -69,11 +69,11 @@ if user_query:
                 cleaned_output = llm.invoke(full_prompt).content
 
                 # ✅ Parse final text safely
-                final_output = parser.invoke(cleaned_output)
+                # final_output = parser.invoke(cleaned_output)
 
                 # Display and store response
-                st.markdown(final_output)
-                st.session_state.messages.append({"role": "assistant", "content": final_output})
+                st.markdown(cleaned_output)
+                st.session_state.messages.append({"role": "assistant", "content": cleaned_output})
 
             except Exception as e:
                 st.error(f"⚠️ Error: {e}")
