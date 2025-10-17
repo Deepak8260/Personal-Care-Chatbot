@@ -1,5 +1,5 @@
 from langchain_community.agent_toolkits import create_sql_agent
-from langchain.agents.agent_types import AgentType
+# from langchain.agents.agent_types import AgentType
 
 
 CUSTOM_SYSTEM_PREFIX = """
@@ -39,7 +39,7 @@ def create_agent(llm, db):
     agent_executor = create_sql_agent(
         llm=llm,
         db=db,
-        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+        # agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         prefix=CUSTOM_SYSTEM_PREFIX,
         verbose=True,
         handle_parsing_errors=True
