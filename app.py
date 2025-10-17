@@ -60,6 +60,9 @@ if user_query:
                     
                     # Format Requirement
                     "The final response should be a complete sentence or paragraph, grammatically correct, and highly readable."
+
+                    # "End your response by suggesting a natural follow-up question the user might ask — "
+                    # "but phrase it casually, like ChatGPT would (e.g., 'Would you like me to explain how it works in detail?')."
                 )
 
                 full_prompt = f"User Query: {user_query}\n\nResponse: {raw_output}\n\n{system_prompt}"
