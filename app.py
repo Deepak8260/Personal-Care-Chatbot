@@ -48,8 +48,19 @@ if user_query:
                 raw_output = response.get("output", "")
 
                 # Step 2: Clean and parse output safely
-                system_prompt = ("I will give you a query and the complete chat response in which there will be unwanted error and unwanted text in the response unrelated to the query. Your task is to provide only the relevant answer to the query without any unrelated text and without any unwanted text and without any unwanted symbols like ** or * .,"
-                "The response should be a complete sentence in a proper meansingful way.")
+                system_prompt = (
+                    "You are a helpful and detailed conversational assistant. I will provide you with a User Query and a Raw LLM Response. "
+                    
+                    # CORE INSTRUCTION: Synthesize and expand, do not just clean.
+                    "Your task is to **fully synthesize a complete, detailed, and polite final response** that directly answers the User Query. "
+                    "Use the Raw LLM Response as your primary source of fact, but **expand upon it** using clear, easy-to-understand language. "
+                    
+                    # Cleaning Instructions (combined and simplified)
+                    "Your final output must be completely clean, meaning you must remove all internal agent tags, errors, conversational preambles, and any unwanted symbols like **, *, or #. "
+                    
+                    # Format Requirement
+                    "The final response should be a complete sentence or paragraph, grammatically correct, and highly readable."
+                )
 
                 full_prompt = f"User Query: {user_query}\n\nResponse: {raw_output}\n\n{system_prompt}"
                 cleaned_output = llm.invoke(full_prompt).content
