@@ -1,5 +1,6 @@
 from langchain_community.agent_toolkits import create_sql_agent
-from langchain.agents.agent_types import AgentType
+# from langchain.agents.agent_types import AgentType
+from langchain_core.agents import AgentType
 
 CUSTOM_SYSTEM_PREFIX = """
 You are an intelligent Text-to-SQL + Knowledge agent for a personal care products company.
